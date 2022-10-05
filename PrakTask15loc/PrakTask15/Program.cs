@@ -13,6 +13,31 @@ namespace PrakTask15
                 new Employee{Name="Rufat",SurName="Aliyev",Salary=1001,Artist="ENIGMA",Song="SADENESSS"}
 
             };
+            string fullname;
+            int num;
+           
+            Func<int, string> func = delegate (int num)
+            {
+                Console.WriteLine(employees[num].Name + ' ' + employees[num].SurName);
+                return fullname = employees[num].Name + ' ' + employees[num].SurName;
+            };
+            
+            
+            
+            
+            
+            Predicate<int> predicate = delegate (int num)
+            {
+                return employees[num].Salary > 1000;
+            };
+            
+            
+           
+            Action<int> songs = delegate (int num)
+            {
+                Console.WriteLine(employees[num].Artist + ": " + employees[num].Song);
+            };
+            
 
             do
             {
@@ -41,7 +66,10 @@ namespace PrakTask15
                         break;
                     case 2:
                         Console.WriteLine("======================================================================================================");
-                        ShowFullName(employees);
+                        Console.WriteLine($"Iscinin nomresini daxil edin (Hazirki isci sayi:{employees.Count})");
+                        num = int.Parse(Console.ReadLine()) - 1;
+                        func(num);
+                        
                         break;
                     case 3:
                         Console.WriteLine("======================================================================================================");
@@ -49,11 +77,18 @@ namespace PrakTask15
                         break;
                     case 4:
                         Console.WriteLine("======================================================================================================");
-                        CheckSalary(employees);
+                        Console.WriteLine($"Iscinin nomresini daxil edin (Hazirki isci sayi:{employees.Count})");
+                        num = int.Parse(Console.ReadLine()) - 1;
+                        predicate(num);
+                        Console.WriteLine(predicate(num));
+                        
                         break;
                     case 5:
                         Console.WriteLine("======================================================================================================");
-                        PrintSongs(employees);
+                        Console.WriteLine($"Iscinin nomresini daxil edin (Hazirki isci sayi:{employees.Count})");
+                        num = int.Parse(Console.ReadLine()) - 1;
+                        songs(num);
+                        
                         break;
 
 
